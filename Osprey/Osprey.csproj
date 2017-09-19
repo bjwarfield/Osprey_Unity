@@ -83,8 +83,10 @@
     <Compile Include="Assets\Scripts\DestroyOnTime.cs" />
     <Compile Include="Assets\Scripts\FodderAI.cs" />
     <Compile Include="Assets\Scripts\GibOnTrigger.cs" />
+    <Compile Include="Assets\Scripts\MissileControl.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\SpawnObjects.cs" />
+    <Compile Include="Assets\Scripts\TargetNearestEnemy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

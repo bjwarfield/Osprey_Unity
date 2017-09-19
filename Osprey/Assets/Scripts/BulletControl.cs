@@ -17,7 +17,7 @@ public class BulletControl : MonoBehaviour {
     {
         //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
         //thisTransfrom.Translate(speed * Time.deltaTime * movement.normalized);
-        thisTransform.Translate(thisTransform.up * speed * Time.deltaTime);
+        thisTransform.Translate(thisTransform.up * speed * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)

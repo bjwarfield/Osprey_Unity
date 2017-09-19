@@ -41,6 +41,7 @@ public class PlayerControl : MonoBehaviour
 
         //fire shot
         if (Input.GetButton("Fire1") && Time.time > lastShot + (1.0f / bulletPerSec))
+        //if (Time.time > lastShot + (1.0f / bulletPerSec))
         {
             foreach(GameObject turret in turrets)
             {
