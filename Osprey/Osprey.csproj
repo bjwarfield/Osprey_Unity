@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\GibOnTrigger.cs" />
     <Compile Include="Assets\Scripts\MissileControl.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\RotateBackAndForth2D.cs" />
     <Compile Include="Assets\Scripts\SpawnObjects.cs" />
     <Compile Include="Assets\Scripts\TargetNearestEnemy.cs" />
   </ItemGroup>

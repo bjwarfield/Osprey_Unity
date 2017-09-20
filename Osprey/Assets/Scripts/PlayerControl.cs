@@ -11,8 +11,12 @@ public class PlayerControl : MonoBehaviour
 
     public GameObject bullet;
     public GameObject[] turrets;
+    public GameObject missile;
+    public GameObject[] missilePods;
     public float bulletPerSec = 10;
-    public float lastShot;
+    public float missilePerSec;
+    private float lastShot;
+    private float lastLaunch;
     public bool godMode = true;
     public GameObject gib = null;
 
@@ -49,6 +53,15 @@ public class PlayerControl : MonoBehaviour
                 lastShot = Time.time;
             }
             
+        }
+
+        if(Input.GetButton("Fire2") && Time.time > lastLaunch + (1.0f / missilePerSec))
+        {
+            foreach(GameObject pod in missilePods)
+            {
+                Instantiate(missile, pod.transform.position, pod.transform.rotation);
+                lastLaunch = Time.time;
+            }
         }
 
 	}
