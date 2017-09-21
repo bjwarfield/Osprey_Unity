@@ -17,7 +17,10 @@ public class PlayerControl : MonoBehaviour
     public float missilePerSec;
     private float lastShot;
     private float lastLaunch;
-    public bool godMode = true;
+    public bool godMode = false;
+    public bool iShield = false;
+    public float iShieldTimer = 2.0f;
+    public float respawnTime = 2.0f;
     public GameObject gib = null;
 
     private Transform thisTransform = null;
@@ -70,6 +73,8 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (godMode || iShield) return;
+
         if (other.CompareTag("EnemyBullet") || other.CompareTag("Enemy"))
         {
             if (gib)
@@ -77,7 +82,7 @@ public class PlayerControl : MonoBehaviour
                 Instantiate(gib, thisTransform.position, gib.transform.rotation);
             }
             gameObject.SetActive(false);
-            Invoke("Respawn", 3.0f);
+            Invoke("Respawn", respawnTime);
         }
     }
 
@@ -86,5 +91,12 @@ public class PlayerControl : MonoBehaviour
     {
         thisTransform.position = new Vector3(0.0f, -verticalRange, 0.0f);
         gameObject.SetActive(true);
+        iShield = true;
+        Invoke("EndShield", iShieldTimer);
+    }
+
+    void EndShield()
+    {
+        iShield = false;
     }
 }
