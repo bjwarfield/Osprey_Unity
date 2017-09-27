@@ -8,7 +8,7 @@ public class EnemyAi : Entity {
     public GameObject playerTarget;
     void Start () {
         thisTransform = GetComponent<Transform>();
-        shipRenderer.sharedMaterial = materials[(int)polarity];
+        thisRenderer.material.mainTexture = textures[(int)polarity];
     }
 	
 	void Update () {

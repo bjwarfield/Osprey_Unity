@@ -11,9 +11,9 @@ public abstract class Entity: MonoBehaviour
     
     public Transform thisTransform = null;
     [SerializeField]
-    protected Renderer shipRenderer = null;
+    protected Renderer thisRenderer = null;
     [SerializeField]
-    protected Material[] materials;
+    protected Texture[] textures;
     public GameObject gibs = null;
 
 

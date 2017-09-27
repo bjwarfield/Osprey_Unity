@@ -380,12 +380,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd91dba6a922794daa59fac81b63b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  horizontalRange: 4.8
-  verticalRange: 7.4
-  rotationSpeed: 720
-  tiltRange: 60
-  tilt: 0
+  thisTransform: {fileID: 0}
+  thisRenderer: {fileID: 23649331237461756}
+  textures:
+  - {fileID: 2800000, guid: f8267fed3fe3800479bd70b83d9a4f01, type: 3}
+  - {fileID: 2800000, guid: d1a64acad673c574eb8077f009c6e251, type: 3}
+  gibs: {fileID: 0}
   shot:
   - {fileID: 1132812898297568, guid: 0a7cf7250f558f04d91a19527a45599e, type: 2}
   - {fileID: 1843887786587458, guid: 54b99dc3049812f44b71b49046f5a180, type: 2}
@@ -393,14 +393,17 @@ MonoBehaviour:
   - {fileID: 1951569040723768}
   - {fileID: 1486115491206834}
   shotFireRate: 25
+  speed: 8
+  horizontalRange: 4.8
+  verticalRange: 7.4
+  rotationSpeed: 720
+  tiltRange: 60
+  tilt: 0
   godMode: 1
   shieldTimer: 2
   respawnTime: 2
-  gibs: {fileID: 0}
-  shipRenderer: {fileID: 23649331237461756}
-  materials:
-  - {fileID: 2100000, guid: dc18c4f7862c01a4488009e36c8864fb, type: 2}
-  - {fileID: 2100000, guid: 5359c7c381dce414e8e3816851136947, type: 2}
+  maxEnergy: 0
+  energy: 0
   shields:
   - {fileID: 1443165685158174}
   - {fileID: 1343891146307568}

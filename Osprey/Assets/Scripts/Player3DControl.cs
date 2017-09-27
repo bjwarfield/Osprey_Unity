@@ -27,6 +27,8 @@ public class Player3DControl : Entity
     //private bool polarize = false;
     public float shieldTimer = 2.0f;
     public float respawnTime = 2.0f;
+    public float maxEnergy;
+    public float energy;
 
     //misc
     //public GameObject gibs = null;
@@ -42,15 +44,14 @@ public class Player3DControl : Entity
 
 
 
-
 	// Use this for initialization
 	void Start () {
         thisTransform = GetComponent<Transform>();
         lastShot = 0.0f;
         polarity = polarType.LIGHT;
-        shipRenderer.sharedMaterial = materials[(int)polarType.LIGHT];
-        shipRenderer.enabled = true;
-        shipRenderer.sortingLayerName = "Player";
+        thisRenderer.material.mainTexture = textures[(int)polarType.LIGHT];
+        thisRenderer.enabled = true;
+        thisRenderer.sortingLayerName = "Player";
         shields[(int)polarType.LIGHT].SetActive(true);
         shields[(int)polarType.DARK].SetActive(false);
         tilt = 0.0f;
@@ -81,15 +82,15 @@ public class Player3DControl : Entity
 
         //set mesh material based on rotation value. Light: [-180, 180], Dark (180,540]\
  
-        if (tilt > 180 )
+        if (tilt > 180 && thisRenderer.material.mainTexture == textures[(int)polarType.LIGHT])
         {
-            shipRenderer.sharedMaterial = materials[(int)polarType.DARK];
+            thisRenderer.material.mainTexture = textures[(int)polarType.DARK];
             shields[(int)polarType.LIGHT].SetActive(false);
             shields[(int)polarType.DARK].SetActive(true);
             //polarize = false;
-        }else 
+        }else if(tilt < 180 && thisRenderer.material.mainTexture == textures[(int)polarType.DARK])
         {
-            shipRenderer.sharedMaterial = materials[(int)polarType.LIGHT];
+            thisRenderer.material.mainTexture = textures[(int)polarType.LIGHT];
             shields[(int)polarType.LIGHT].SetActive(true);
             shields[(int)polarType.DARK].SetActive(false);
             //polarize = false;
@@ -127,7 +128,7 @@ public class Player3DControl : Entity
         {
             polarSwap();
         }
-
+        
     }
 
 

@@ -36,6 +36,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4361113898509792}
+  - component: {fileID: 114341098536155542}
+  - component: {fileID: 114291088553891936}
   m_Layer: 0
   m_Name: Enemy 01
   m_TagString: Untagged
@@ -95,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750634139551278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.503, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4361113898509792}
@@ -167,3 +169,40 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155169530687452}
   m_Mesh: {fileID: 4300000, guid: bc9048af1233f5e4e913c37e8f3d6ca6, type: 3}
+--- !u!114 &114291088553891936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675350342192428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef3120da61329548913c58a77a6d6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisTransform: {fileID: 0}
+  thisRenderer: {fileID: 23662037329659108}
+  textures:
+  - {fileID: 2800000, guid: 94ef5a26f66d02448bc9b70ca8418e37, type: 3}
+  - {fileID: 2800000, guid: 6be079788c9e56f43a908f484c58993e, type: 3}
+  gibs: {fileID: 0}
+  shot:
+  - {fileID: 1637775526842452, guid: cf79d4eed8aabf44180d4fedd8f231cd, type: 2}
+  - {fileID: 1885209950712474, guid: 81969d0770529654eae37b67657a8bbf, type: 2}
+  gunBarrel:
+  - {fileID: 1750634139551278}
+  shotFireRate: 0.2
+  speed: 1
+  playerTarget: {fileID: 0}
+--- !u!114 &114341098536155542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675350342192428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e199a50f044a14385ad298aaa1cecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTarget: {fileID: 0}
