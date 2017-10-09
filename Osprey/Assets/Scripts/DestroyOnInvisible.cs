@@ -14,7 +14,7 @@ public class DestroyOnInvisible : MonoBehaviour {
         }else
         {
             Destroy(gameObject);
-            Debug.Log("Depop!");
+            //Debug.Log("Depop!");
         }
         
     }

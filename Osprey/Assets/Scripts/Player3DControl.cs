@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 public class Player3DControl : Entity
@@ -27,7 +27,7 @@ public class Player3DControl : Entity
     //private bool polarize = false;
     public float shieldTimer = 2.0f;
     public float respawnTime = 2.0f;
-    public float maxEnergy;
+    public float maxEnergy = 100.0f;
     public float energy;
 
     //misc
@@ -41,11 +41,16 @@ public class Player3DControl : Entity
     //private Material[] materials;
     [SerializeField]
     private GameObject[] shields;
-
-
-
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private Texture[] textures;
+    [SerializeField]
+    private Text[] UITexts;
+    private string col_none = "Shields: Neutral";
+    private string col_breech = "Shields: Breeched!!";
+    private string col_charge = "Shields: Charging";
+    private string energyPrefix = "Energy: ";
+    // Use this for initialization
+    void Start () {
         thisTransform = GetComponent<Transform>();
         lastShot = 0.0f;
         polarity = polarType.LIGHT;
@@ -55,6 +60,9 @@ public class Player3DControl : Entity
         shields[(int)polarType.LIGHT].SetActive(true);
         shields[(int)polarType.DARK].SetActive(false);
         tilt = 0.0f;
+
+        UITexts[0].text = col_none;
+        UITexts[0].color = new Color(1, 1, 1);
 	}
 	
 	// Update is called once per frame
@@ -128,21 +136,48 @@ public class Player3DControl : Entity
         {
             polarSwap();
         }
-        
+
+
+        //set UI text
+        UITexts[1].text = energyPrefix + energy;
     }
 
 
     //disable gameobject on death condition
     private void OnTriggerEnter(Collider other)
     {
+        
+        if (other.CompareTag("EnemyBullet"))
+        {
+           
+            Entity bullet = other.gameObject.GetComponent<EnemyBulletControl>();
+            //Debug.Log(bullet.getPolarity());
+            if (bullet.getPolarity() == polarity)
+            {
+                UITexts[0].text = col_charge;
+                UITexts[0].color = new Color(0, 1, 0);
+                energy += 5.0f;
+                if (energy > maxEnergy) energy = maxEnergy;
+            }
+            else
+            {
+                UITexts[0].text = col_breech;
+                UITexts[0].color = new Color(1, 0, 0);
+            }
+        }
+
+
         //skip if godMode or respawn shielded
         if (godMode || tempShield) return;
 
         //check if other is enemy tagged
-        if(other.CompareTag("EnemyBullet") || other.CompareTag("Enemy"))
+        if(other.CompareTag("Enemy"))
         {
-            //instantiate death effects
-            if (gibs)
+
+            
+
+                //instantiate death effects
+             if (gibs)
             {
                 Instantiate(gibs, thisTransform.position, gibs.transform.rotation);
             }
@@ -151,6 +186,7 @@ public class Player3DControl : Entity
             gameObject.SetActive(false);
             Invoke("Respawn", respawnTime);
         }
+
 
     }
 

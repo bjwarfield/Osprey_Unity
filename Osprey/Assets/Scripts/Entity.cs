@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum polarType : int { LIGHT = 0, DARK = 1 };
+public enum polarType: int { LIGHT = 0, DARK = 1 };
 
 public abstract class Entity: MonoBehaviour
 {
@@ -11,20 +11,23 @@ public abstract class Entity: MonoBehaviour
     
     public Transform thisTransform = null;
     [SerializeField]
-    protected Renderer thisRenderer = null;
+    public Renderer thisRenderer = null;
     [SerializeField]
-    protected Texture[] textures;
+    public Material[] materials;
     public GameObject gibs = null;
 
 
     //weapon vars
-    public GameObject[] shot;
+    public Entity[] shot;
     public GameObject[] gunBarrel;
     public float shotFireRate = 25.0f;
     protected float lastShot;
 
     //status vars
     [SerializeField]
-    protected polarType polarity { get; set; }
+    protected polarType polarity;
+
+    public polarType getPolarity() { return polarity; }
+    public virtual void setPolarity(polarType value) { polarity = value; }
     
 }

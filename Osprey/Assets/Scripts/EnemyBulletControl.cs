@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletControl : MonoBehaviour {
+public class EnemyBulletControl : Entity {
 	
-    private Transform thisTransform = null;
     public float speed = 1.0f;
 
 	void Start () {
         thisTransform = GetComponent<Transform>();
+        //thisRenderer = GetComponent<SpriteRenderer>();
 	}
 	
 	void Update () {
@@ -22,4 +22,5 @@ public class EnemyBulletControl : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
 }

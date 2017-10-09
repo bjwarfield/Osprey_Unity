@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLaserBoltControl : MonoBehaviour {
+public class PlayerLaserBoltControl : Entity {
 
-    private Transform thisTransform = null;
+
     public float speed = 1.0f;
 
 	// Use this for initialization

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114291088553891936}
   m_Layer: 0
   m_Name: Enemy 01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a6aeed4d6bca2e14f906cb6446ecc852, type: 2}
+  - {fileID: 2100000, guid: e8179681887fd4f47b67dd5cb37524c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -182,16 +182,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisTransform: {fileID: 0}
   thisRenderer: {fileID: 23662037329659108}
-  textures:
-  - {fileID: 2800000, guid: 94ef5a26f66d02448bc9b70ca8418e37, type: 3}
-  - {fileID: 2800000, guid: 6be079788c9e56f43a908f484c58993e, type: 3}
+  materials:
+  - {fileID: 2100000, guid: e8179681887fd4f47b67dd5cb37524c4, type: 2}
+  - {fileID: 2100000, guid: 8eb23fc63d35d5b45b9911bdbcf9d8bc, type: 2}
   gibs: {fileID: 0}
   shot:
-  - {fileID: 1637775526842452, guid: cf79d4eed8aabf44180d4fedd8f231cd, type: 2}
-  - {fileID: 1885209950712474, guid: 81969d0770529654eae37b67657a8bbf, type: 2}
+  - {fileID: 114062050876055368, guid: cf79d4eed8aabf44180d4fedd8f231cd, type: 2}
+  - {fileID: 114693249048514924, guid: 81969d0770529654eae37b67657a8bbf, type: 2}
   gunBarrel:
   - {fileID: 1750634139551278}
-  shotFireRate: 0.2
+  shotFireRate: 0.5
+  polarity: 0
   speed: 1
   playerTarget: {fileID: 0}
 --- !u!114 &114341098536155542

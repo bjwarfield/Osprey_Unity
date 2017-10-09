@@ -8,7 +8,7 @@ public class EnemyAi : Entity {
     public GameObject playerTarget;
     void Start () {
         thisTransform = GetComponent<Transform>();
-        thisRenderer.material.mainTexture = textures[(int)polarity];
+        thisRenderer.sharedMaterial = materials[(int)polarity];
     }
 	
 	void Update () {
@@ -23,6 +23,7 @@ public class EnemyAi : Entity {
                     float ang = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                     barrel.transform.rotation = Quaternion.AngleAxis(ang -90, Vector3.forward);
                 }
+
                 Instantiate(shot[(int)polarity], barrel.transform.position, barrel.transform.rotation);
                 lastShot = Time.time;
             }

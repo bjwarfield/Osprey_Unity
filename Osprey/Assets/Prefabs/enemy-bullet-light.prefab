@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 135497486630641172}
   - component: {fileID: 114886803142714774}
   - component: {fileID: 114062050876055368}
-  m_Layer: 0
-  m_Name: enemy-bullet
-  m_TagString: Untagged
+  m_Layer: 11
+  m_Name: enemy-bullet-light
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a45317794f6bf64583080d7a348ef42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  thisTransform: {fileID: 0}
+  thisRenderer: {fileID: 212919811197356754}
+  materials: []
+  gibs: {fileID: 0}
+  shot: []
+  gunBarrel: []
+  shotFireRate: 25
+  polarity: 0
+  speed: 2
 --- !u!114 &114886803142714774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,7 +82,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637775526842452}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1
