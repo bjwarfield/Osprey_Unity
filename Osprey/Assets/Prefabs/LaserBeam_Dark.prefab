@@ -72,6 +72,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b685c89d555bf48adce3fc5db36281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisTransform: {fileID: 0}
+  thisRenderer: {fileID: 0}
+  materials: []
+  gibs: {fileID: 0}
+  shot: []
+  gunBarrel: []
+  shotFireRate: 25
+  polarity: 1
+  speed: 50
+  beamPath: {fileID: 0}
 --- !u!114 &114756847712405448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +165,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 13362009
+  randomSeed: -1540457319
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -8,17 +8,20 @@ public class PolarBlast : MonoBehaviour
 
     public List<Transform> transformChain;
     public int chainJumps;
-    private QuadraticBezierChain beam;
+    private QuadraticBezierChain beamPath;
     public GameObject parent;
+    public PlayerLaserBeam beamProjectile;
+    private List<GameObject> targets;
     public Vector3 offsetFromParent;
     private Quaternion rotation;
     // Use this for initialization
 
     private Transform thisTransform;
 	void Start () {
-        beam = GetComponent<QuadraticBezierChain>();
+        beamPath = GetComponent<QuadraticBezierChain>();
         thisTransform = GetComponent<Transform>();
         rotation = thisTransform.rotation;
+        targets = new List<GameObject>();
 	}
 
 
@@ -29,6 +32,8 @@ public class PolarBlast : MonoBehaviour
         if (Input.GetButtonDown("Fire3"))
         {
             getPath();
+            PlayerLaserBeam beam = Instantiate(beamProjectile, thisTransform.position, thisTransform.rotation) as PlayerLaserBeam;
+            beam.Init(beamPath, targets);
         }
 	}
 
@@ -37,6 +42,7 @@ public class PolarBlast : MonoBehaviour
     {
         List<GameObject> allEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
 
+        targets.Clear();
         transformChain.Clear();
         transformChain.Add(thisTransform);
 
@@ -65,6 +71,7 @@ public class PolarBlast : MonoBehaviour
             if (nearestEnemy)
             {
                 transformChain.Add(nearestEnemy.transform);
+                targets.Add(nearestEnemy);
                 allEnemies.Remove(nearestEnemy);
             }
         }
@@ -106,7 +113,7 @@ public class PolarBlast : MonoBehaviour
 
             chain.Add(link);
         }
-        beam.SetBezierChain(chain);
+        beamPath.SetBezierChain(chain);
     }
     private void LateUpdate()
     {

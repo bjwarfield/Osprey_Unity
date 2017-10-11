@@ -89,7 +89,7 @@ public class QuadraticBezierChain : MonoBehaviour
         if (subDivisionPoints == null)
         {
             //init to 16, user can change this later
-            subdivisionsPerSection = 8;
+            subdivisionsPerSection = 16;
             oneTimeRecalculate = true;
         }
 
