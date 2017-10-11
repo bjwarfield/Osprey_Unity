@@ -21,16 +21,29 @@ public class PolarBlast : MonoBehaviour
         rotation = thisTransform.rotation;
 	}
 
+
+    
+
     // Update is called once per frame
     void Update() {
+        if (Input.GetButtonDown("Fire3"))
+        {
+            getPath();
+        }
+	}
+
+
+    private void getPath()
+    {
         List<GameObject> allEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
 
         transformChain.Clear();
         transformChain.Add(thisTransform);
 
-        for (int i = 0; i < chainJumps; i++) {
-            
-            if(allEnemies.Count < 1)
+        for (int i = 0; i < chainJumps; i++)
+        {
+
+            if (allEnemies.Count < 1)
             {
                 break;
             }
@@ -63,7 +76,7 @@ public class PolarBlast : MonoBehaviour
             Vector3 start, pull, end;
 
             start = transformChain[i].position;
-            if(i == 0)
+            if (i == 0)
             {
                 pull = transformChain[i].position + transformChain[i].up * 3.0f;
                 if (i == transformChain.Count - 1)
@@ -74,9 +87,9 @@ public class PolarBlast : MonoBehaviour
                 {
                     end = transformChain[i + 1].position;
                 }
-                    
+
             }
-            else if( i == transformChain.Count - 1)
+            else if (i == transformChain.Count - 1)
             {
                 pull = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 4;
                 end = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 8;
@@ -88,14 +101,13 @@ public class PolarBlast : MonoBehaviour
             }
 
             start.z = pull.z = end.z = 0;
-            
+
             QuadraticBezierPoints link = new QuadraticBezierPoints(start, pull, end);
 
             chain.Add(link);
         }
         beam.SetBezierChain(chain);
-	}
-
+    }
     private void LateUpdate()
     {
         thisTransform.position = parent.transform.position + offsetFromParent;

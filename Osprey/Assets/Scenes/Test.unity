@@ -145,7 +145,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
@@ -206,7 +206,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
@@ -272,8 +272,8 @@ GameObject:
   m_Component:
   - component: {fileID: 308199468}
   - component: {fileID: 308199471}
-  - component: {fileID: 308199470}
   - component: {fileID: 308199469}
+  - component: {fileID: 308199470}
   m_Layer: 8
   m_Name: LaserLeft
   m_TagString: Untagged
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformChain: []
-  chainJumps: 4
+  chainJumps: 5
   parent: {fileID: 2018306359}
   offsetFromParent: {x: -0.34, y: -0.21, z: 0}
 --- !u!120 &308199470
@@ -344,21 +344,13 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -2, y: 0, z: 0}
-  - {x: -1.75, y: 0.234375, z: 0}
   - {x: -1.5, y: 0.4375, z: 0}
-  - {x: -1.25, y: 0.609375, z: 0}
   - {x: -1, y: 0.75, z: 0}
-  - {x: -0.75, y: 0.859375, z: 0}
   - {x: -0.5, y: 0.9375, z: 0}
-  - {x: -0.25, y: 0.984375, z: 0}
   - {x: 0, y: 1, z: 0}
-  - {x: 0.25, y: 0.984375, z: 0}
   - {x: 0.5, y: 0.9375, z: 0}
-  - {x: 0.75, y: 0.859375, z: 0}
   - {x: 1, y: 0.75, z: 0}
-  - {x: 1.25, y: 0.609375, z: 0}
   - {x: 1.5, y: 0.4375, z: 0}
-  - {x: 1.75, y: 0.234375, z: 0}
   - {x: 2, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
@@ -428,15 +420,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1acc57180240342879db29b90f49be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subdivisionsPerSection: 16
-  totalSubdivisions: 16
+  subdivisionsPerSection: 8
   bezierChain:
   - p0: {x: -2, y: -0, z: -0}
     p1: {x: 0, y: 2, z: 0}
     p2: {x: 2, y: 0, z: 0}
-  useLineRenderer: 1
+  useLineRenderer: 0
   stayWithTransform: 0
   useTransformScale: 0
+  showGizmos: 1
   continualRecalculate: 1
 --- !u!1001 &488440995
 Prefab:
@@ -475,7 +467,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
@@ -673,7 +665,7 @@ Transform:
   - {fileID: 292638616}
   - {fileID: 1394982835}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &785602821
 BoxCollider:
@@ -726,7 +718,8 @@ MonoBehaviour:
   gunBarrel: []
   shotFireRate: 0
   polarity: 1
-  gravStrength: 5
+  gravStrength: 2
+  gravMax: 50
   focusOffset: {x: 0, y: 0.33, z: 0}
 --- !u!135 &801893737
 SphereCollider:
@@ -777,7 +770,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
@@ -982,20 +975,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1026,7 +1005,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1049512413
 Prefab:
@@ -1070,7 +1049,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4794732233092048, guid: 4f33d15c5dcaf3945ad0c1226f08dba8, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198524662540054348, guid: 4f33d15c5dcaf3945ad0c1226f08dba8,
         type: 2}
@@ -1202,7 +1181,7 @@ Transform:
   - {fileID: 1315468852}
   - {fileID: 1015897939}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315468850
 GameObject:
@@ -1252,20 +1231,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1380,7 +1345,7 @@ Transform:
   m_LocalScale: {x: 16, y: 16, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1394982834
 GameObject:
@@ -1497,7 +1462,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1500268249
 GameObject:
@@ -1559,7 +1524,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1576833715
 GameObject:
@@ -1675,7 +1640,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665564426
 GameObject:
@@ -1721,15 +1686,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1acc57180240342879db29b90f49be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subdivisionsPerSection: 16
-  totalSubdivisions: 16
+  subdivisionsPerSection: 8
   bezierChain:
   - p0: {x: -2, y: -0, z: -0}
     p1: {x: 0, y: 2, z: 0}
     p2: {x: 2, y: 0, z: 0}
-  useLineRenderer: 1
+  useLineRenderer: 0
   stayWithTransform: 0
   useTransformScale: 0
+  showGizmos: 1
   continualRecalculate: 1
 --- !u!120 &1665564429
 LineRenderer:
@@ -1765,21 +1730,13 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -2, y: 0, z: 0}
-  - {x: -1.75, y: 0.234375, z: 0}
   - {x: -1.5, y: 0.4375, z: 0}
-  - {x: -1.25, y: 0.609375, z: 0}
   - {x: -1, y: 0.75, z: 0}
-  - {x: -0.75, y: 0.859375, z: 0}
   - {x: -0.5, y: 0.9375, z: 0}
-  - {x: -0.25, y: 0.984375, z: 0}
   - {x: 0, y: 1, z: 0}
-  - {x: 0.25, y: 0.984375, z: 0}
   - {x: 0.5, y: 0.9375, z: 0}
-  - {x: 0.75, y: 0.859375, z: 0}
   - {x: 1, y: 0.75, z: 0}
-  - {x: 1.25, y: 0.609375, z: 0}
   - {x: 1.5, y: 0.4375, z: 0}
-  - {x: 1.75, y: 0.234375, z: 0}
   - {x: 2, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
@@ -1850,9 +1807,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformChain: []
-  chainJumps: 3
+  chainJumps: 5
   parent: {fileID: 2018306359}
   offsetFromParent: {x: 0.34, y: -0.21, z: 0}
+--- !u!1001 &1712374122
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737540734944374, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1795509294 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1443165685158174, guid: 4f33d15c5dcaf3945ad0c1226f08dba8,
@@ -1878,6 +1877,7 @@ MonoBehaviour:
   shotFireRate: 0
   polarity: 0
   gravStrength: 2
+  gravMax: 50
   focusOffset: {x: 0, y: 0.33, z: 0}
 --- !u!135 &1795509297
 SphereCollider:
@@ -1948,7 +1948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2070166229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,7 +2019,7 @@ RectTransform:
   - {fileID: 1576833716}
   - {fileID: 956305743}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

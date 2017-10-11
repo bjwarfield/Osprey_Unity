@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PolarityShield : Entity {
     public float gravStrength;
+    public float gravMax;
     public Vector3 focusOffset; 
 
     private void Start()
@@ -26,6 +27,7 @@ public class PolarityShield : Entity {
                 bullet.transform.rotation = Quaternion.AngleAxis(ang - 90, Vector3.forward);
                 //bullet.transform.position = Vector3.Slerp(bullet.transform.position, bullet.transform.position + focusOffset, 1.0f * Time.deltaTime);
                 bullet.speed += gravStrength;
+                bullet.speed = Mathf.Min(bullet.speed, gravMax);
             }
         }
     }
