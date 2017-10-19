@@ -25,6 +25,7 @@ public class PlayerLaserBoltControl : Entity {
         if (other.CompareTag("Enemy"))
         {
             Destroy(gameObject);
+            Instantiate(gibs, thisTransform.position, thisTransform.rotation);
         }
     }
 }

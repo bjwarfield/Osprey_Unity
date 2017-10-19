@@ -18,7 +18,7 @@ public class PolarityShield : Entity {
         {
             EnemyBulletControl bullet = other.gameObject.GetComponent<EnemyBulletControl>();
             //Debug.Log(bullet.getPolarity());
-            if (bullet.getPolarity() == polarity)
+            if (bullet.Polarity== polarity)
             {
                 //bullet.transform.Translate((thisTransform.position) * Time.deltaTime * gravStrength, Space.Self);
                 Vector3 diff = thisTransform.position - bullet.transform.position + focusOffset;

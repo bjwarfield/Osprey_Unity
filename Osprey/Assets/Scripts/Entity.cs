@@ -18,16 +18,21 @@ public abstract class Entity: MonoBehaviour
 
 
     //weapon vars
-    public Entity[] shot;
-    public GameObject[] gunBarrel;
-    public float shotFireRate = 25.0f;
-    protected float lastShot;
+    //public Entity[] shot;
+    //public GameObject[] gunBarrel;
+    //public float shotFireRate = 25.0f;
+    //protected float lastShot;
 
     //status vars
     [SerializeField]
     protected polarType polarity;
 
-    public polarType getPolarity() { return polarity; }
-    public virtual void setPolarity(polarType value) { polarity = value; }
+    public polarType Polarity
+    {
+        get
+        { return polarity; }
+    }
+
+    public virtual void SetPolarity(polarType value) { polarity = value; }
     
 }

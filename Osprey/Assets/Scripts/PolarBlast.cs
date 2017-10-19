@@ -8,20 +8,20 @@ public class PolarBlast : MonoBehaviour
 
     public List<Transform> transformChain;
     public int chainJumps;
-    private QuadraticBezierChain beamPath;
+    //private QuadraticBezierChain beamPath;
     public GameObject parent;
-    public PlayerLaserBeam beamProjectile;
-    private List<GameObject> targets;
+    public PlayerLaserTorpedo beamProjectile;
+    //private List<GameObject> targets;
     public Vector3 offsetFromParent;
     private Quaternion rotation;
     // Use this for initialization
 
     private Transform thisTransform;
 	void Start () {
-        beamPath = GetComponent<QuadraticBezierChain>();
+        //beamPath = GetComponent<QuadraticBezierChain>();
         thisTransform = GetComponent<Transform>();
         rotation = thisTransform.rotation;
-        targets = new List<GameObject>();
+        //targets = new List<GameObject>();
 	}
 
 
@@ -31,18 +31,18 @@ public class PolarBlast : MonoBehaviour
     void Update() {
         if (Input.GetButtonDown("Fire3"))
         {
-            getPath();
-            PlayerLaserBeam beam = Instantiate(beamProjectile, thisTransform.position, thisTransform.rotation) as PlayerLaserBeam;
-            beam.Init(beamPath, targets);
+            GetPath();
+            PlayerLaserTorpedo beam = Instantiate(beamProjectile, thisTransform.position, thisTransform.rotation) as PlayerLaserTorpedo;
+            beam.Init(transformChain);
         }
 	}
 
 
-    private void getPath()
+    private void GetPath()
     {
         List<GameObject> allEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
 
-        targets.Clear();
+        //targets.Clear();
         transformChain.Clear();
         transformChain.Add(thisTransform);
 
@@ -71,50 +71,53 @@ public class PolarBlast : MonoBehaviour
             if (nearestEnemy)
             {
                 transformChain.Add(nearestEnemy.transform);
-                targets.Add(nearestEnemy);
+                //targets.Add(nearestEnemy);
                 allEnemies.Remove(nearestEnemy);
             }
         }
 
-        List<QuadraticBezierPoints> chain = new List<QuadraticBezierPoints>();
+        //List<QuadraticBezierPoints> chain = new List<QuadraticBezierPoints>();
 
-        for (int i = 0; i < transformChain.Count; i++)
-        {
-            Vector3 start, pull, end;
+        //for (int i = 0; i < transformChain.Count; i++)
+        //{
+        //    Vector3 start, pull, end;
 
-            start = transformChain[i].position;
-            if (i == 0)
-            {
-                pull = transformChain[i].position + transformChain[i].up * 3.0f;
-                if (i == transformChain.Count - 1)
-                {
-                    end = transformChain[i].position + transformChain[i].up * 4.0f;
-                }
-                else
-                {
-                    end = transformChain[i + 1].position;
-                }
+        //    start = transformChain[i].position;
+        //    if (i == 0)
+        //    {
+        //        pull = transformChain[i].position + transformChain[i].up * 3.0f;
+        //        if (i == transformChain.Count - 1)
+        //        {
+        //            end = transformChain[i].position + transformChain[i].up * 4.0f;
+        //        }
+        //        else
+        //        {
+        //            end = transformChain[i + 1].position;
+        //        }
 
-            }
-            else if (i == transformChain.Count - 1)
-            {
-                pull = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 4;
-                end = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 8;
-            }
-            else
-            {
-                pull = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 4.0f;
-                end = transformChain[i + 1].position;
-            }
+        //    }
+        //    else if (i == transformChain.Count - 1)
+        //    {
+        //        pull = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 4;
+        //        end = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 8;
+        //    }
+        //    else
+        //    {
+        //        pull = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 4.0f;
+        //        end = transformChain[i + 1].position;
+        //    }
 
-            start.z = pull.z = end.z = 0;
+        //    start.z = pull.z = end.z = 0;
 
-            QuadraticBezierPoints link = new QuadraticBezierPoints(start, pull, end);
+        //    QuadraticBezierPoints link = new QuadraticBezierPoints(start, pull, end);
 
-            chain.Add(link);
-        }
-        beamPath.SetBezierChain(chain);
+        //    chain.Add(link);
+        //}
+
+        //beamPath.SetBezierChain(TransformsToBezierPoints(transformChain));
     }
+
+
     private void LateUpdate()
     {
         thisTransform.position = parent.transform.position + offsetFromParent;

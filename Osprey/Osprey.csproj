@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\BGScroller.cs" />
     <Compile Include="Assets\Scripts\BulletControl.cs" />
     <Compile Include="Assets\Scripts\DestroyOnInvisible.cs" />
+    <Compile Include="Assets\Scripts\DestroyOnLifetime.cs" />
     <Compile Include="Assets\Scripts\DestroyOnTime.cs" />
     <Compile Include="Assets\Scripts\EnemyAi.cs" />
     <Compile Include="Assets\Scripts\EnemyBulletControl.cs" />
@@ -94,14 +95,20 @@
     <Compile Include="Assets\Scripts\MissileControl.cs" />
     <Compile Include="Assets\Scripts\Player3DControl.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
-    <Compile Include="Assets\Scripts\PlayerLaserBeam.cs" />
     <Compile Include="Assets\Scripts\PlayerLaserBoltControl.cs" />
+    <Compile Include="Assets\Scripts\PlayerLaserTorpedo.cs" />
     <Compile Include="Assets\Scripts\PolarBlast.cs" />
     <Compile Include="Assets\Scripts\PolarityShield.cs" />
     <Compile Include="Assets\Scripts\QuadraticBezierChain.cs" />
     <Compile Include="Assets\Scripts\RotateBackAndForth2D.cs" />
     <Compile Include="Assets\Scripts\SpawnObjects.cs" />
     <Compile Include="Assets\Scripts\TargetNearestEnemy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

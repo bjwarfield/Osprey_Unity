@@ -16,10 +16,11 @@ public class Player3DControl : Entity
     public float tilt;
 
     //weapon vars
-    //public GameObject[] shot;
-    //public GameObject[] gunBarrel;
-    //public float shotFireRate = 25.0f;
-    
+    public GameObject[] shot;
+    public GameObject[] gunBarrel;
+    public float shotFireRate = 25.0f;
+    private float lastShot;
+
     //status vars
     public bool godMode = false;
     private bool tempShield = false;
@@ -152,7 +153,7 @@ public class Player3DControl : Entity
            
             Entity bullet = other.gameObject.GetComponent<EnemyBulletControl>();
             //Debug.Log(bullet.getPolarity());
-            if (bullet.getPolarity() == polarity)
+            if (bullet.Polarity== polarity)
             {
                 UITexts[0].text = col_charge;
                 UITexts[0].color = new Color(0, 1, 0);

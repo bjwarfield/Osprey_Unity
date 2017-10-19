@@ -74,11 +74,8 @@ MonoBehaviour:
   thisRenderer: {fileID: 212919811197356754}
   materials: []
   gibs: {fileID: 0}
-  shot: []
-  gunBarrel: []
-  shotFireRate: 25
   polarity: 0
-  speed: 2
+  speed: 10
 --- !u!114 &114886803142714774
 MonoBehaviour:
   m_ObjectHideFlags: 1

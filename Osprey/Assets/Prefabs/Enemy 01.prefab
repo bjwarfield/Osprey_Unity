@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 4361113898509792}
   - component: {fileID: 114341098536155542}
   - component: {fileID: 114291088553891936}
+  - component: {fileID: 136393790328405592}
+  - component: {fileID: 54335256910714528}
   m_Layer: 0
   m_Name: Enemy 01
   m_TagString: Enemy
@@ -169,6 +171,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155169530687452}
   m_Mesh: {fileID: 4300000, guid: bc9048af1233f5e4e913c37e8f3d6ca6, type: 3}
+--- !u!54 &54335256910714528
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675350342192428}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 8
+  m_CollisionDetection: 0
 --- !u!114 &114291088553891936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,14 +203,19 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e8179681887fd4f47b67dd5cb37524c4, type: 2}
   - {fileID: 2100000, guid: 8eb23fc63d35d5b45b9911bdbcf9d8bc, type: 2}
   gibs: {fileID: 0}
+  polarity: 0
+  speed: 1
   shot:
   - {fileID: 114062050876055368, guid: cf79d4eed8aabf44180d4fedd8f231cd, type: 2}
   - {fileID: 114693249048514924, guid: 81969d0770529654eae37b67657a8bbf, type: 2}
   gunBarrel:
   - {fileID: 1750634139551278}
   shotFireRate: 0.5
-  polarity: 0
-  speed: 1
+  maxHealth: 0
+  flashTime: 0.02
+  colors:
+  - {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  - {r: 0.8897059, g: 0.8897059, b: 0.8897059, a: 1}
   playerTarget: {fileID: 0}
 --- !u!114 &114341098536155542
 MonoBehaviour:
@@ -207,3 +229,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTarget: {fileID: 0}
+--- !u!136 &136393790328405592
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675350342192428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.32
+  m_Height: 1.24
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

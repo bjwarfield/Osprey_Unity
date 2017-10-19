@@ -89,7 +89,7 @@ public class QuadraticBezierChain : MonoBehaviour
         if (subDivisionPoints == null)
         {
             //init to 16, user can change this later
-            subdivisionsPerSection = 16;
+            subdivisionsPerSection = 32;
             oneTimeRecalculate = true;
         }
 
@@ -281,6 +281,7 @@ public class QuadraticBezierChain : MonoBehaviour
     //return a array of distances from origin of vectors in chain 
     public float[] GetLengths(Vector3[] controlPoints)
     {
+       
         // lets create lengths for each control point.
         float[] lengths = new float[controlPoints.Length];
         float totalDistance = 0;
@@ -303,7 +304,7 @@ public class QuadraticBezierChain : MonoBehaviour
     //retrun a vector point on the chain x distance from the origin point
     public Vector3 GetPoint (float distance)
     {
-        
+        CheckRecalculate();
 
         float[] lengths = GetLengths(subDivisionPoints);
 

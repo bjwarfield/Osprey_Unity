@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class EnemyAi : Entity {
     public float speed = 1.0f;
+    public Entity[] shot;
+    public GameObject[] gunBarrel;
+    public float shotFireRate = 25.0f;
+    protected float lastShot;
+    private float health;
+    public float maxHealth;
+    private bool hit;
+    public float flashTime;
+    private float hitTimer;
+    public Color[] colors;
 
     public GameObject playerTarget;
     void Start () {
         thisTransform = GetComponent<Transform>();
         thisRenderer.sharedMaterial = materials[(int)polarity];
+        hitTimer = 0;
+        playerTarget = GameObject.FindGameObjectWithTag("Player");
     }
 	
 	void Update () {
@@ -29,6 +41,28 @@ public class EnemyAi : Entity {
             }
 
         }
+        if(hit)
+        {
+            if (Time.time < hitTimer)
+            {
+                thisRenderer.material.SetColor("_SpecColor", colors[1]);
+            }else
+            {
+                hit = false;
+                thisRenderer.material.SetColor("_SpecColor", colors[0]);
+            }
+        }
+        
         
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("PlayerBullet") || other.CompareTag("Player"))
+        {
+            //Debug.Log("Enemy hit!");
+            hit = true;
+            hitTimer = Time.time + flashTime;
+        }
+    }
 }

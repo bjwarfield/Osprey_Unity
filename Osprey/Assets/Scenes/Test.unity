@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   cosAmplitude: -0.05
-  cosFrequency: 0.2
+  cosFrequency: 1
 --- !u!1001 &52724105
 Prefab:
   m_ObjectHideFlags: 0
@@ -164,26 +164,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
-        type: 2}
-      propertyPath: playerTarget
-      value: 
-      objectReference: {fileID: 2018306359}
-    - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
-        type: 2}
-      propertyPath: polarity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
-        type: 2}
-      propertyPath: shotFireRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1675350342192428, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
-      propertyPath: m_TagString
-      value: Enemy
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
@@ -225,7 +206,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
@@ -240,7 +221,7 @@ Prefab:
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
       propertyPath: shotFireRate
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1675350342192428, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_TagString
@@ -271,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   cosAmplitude: 0.05
-  cosFrequency: 0.5
+  cosFrequency: 1
 --- !u!1 &292638615
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +290,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 308199468}
-  - component: {fileID: 308199471}
   - component: {fileID: 308199469}
   m_Layer: 8
   m_Name: LaserLeft
@@ -349,27 +329,6 @@ MonoBehaviour:
   beamProjectile: {fileID: 114074737313355826, guid: 3168770ad8868f44388f556e0eaabc72,
     type: 2}
   offsetFromParent: {x: -0.34, y: -0.21, z: 0}
---- !u!114 &308199471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 308199467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1acc57180240342879db29b90f49be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subdivisionsPerSection: 16
-  bezierChain:
-  - p0: {x: -2, y: -0, z: -0}
-    p1: {x: 0, y: 2, z: 0}
-    p2: {x: 2, y: 0, z: 0}
-  useLineRenderer: 0
-  stayWithTransform: 0
-  useTransformScale: 0
-  showGizmos: 1
-  continualRecalculate: 1
 --- !u!1001 &488440995
 Prefab:
   m_ObjectHideFlags: 0
@@ -407,7 +366,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
@@ -421,7 +380,7 @@ Prefab:
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
       propertyPath: shotFireRate
-      value: 2.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1675350342192428, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_TagString
@@ -605,7 +564,7 @@ Transform:
   - {fileID: 292638616}
   - {fileID: 1394982835}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &785602821
 BoxCollider:
@@ -654,12 +613,9 @@ MonoBehaviour:
   thisRenderer: {fileID: 0}
   materials: []
   gibs: {fileID: 0}
-  shot: []
-  gunBarrel: []
-  shotFireRate: 0
   polarity: 1
   gravStrength: 2
-  gravMax: 50
+  gravMax: 25
   focusOffset: {x: 0, y: 0.33, z: 0}
 --- !u!135 &801893737
 SphereCollider:
@@ -710,7 +666,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4361113898509792, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
@@ -724,11 +680,16 @@ Prefab:
     - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
         type: 2}
       propertyPath: shotFireRate
-      value: 2.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1675350342192428, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 114291088553891936, guid: d0c91706830f65e4b84e1c0594adb2fc,
+        type: 2}
+      propertyPath: flashTime
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0c91706830f65e4b84e1c0594adb2fc, type: 2}
@@ -945,7 +906,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1049512413
 Prefab:
@@ -989,7 +950,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4794732233092048, guid: 4f33d15c5dcaf3945ad0c1226f08dba8, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198524662540054348, guid: 4f33d15c5dcaf3945ad0c1226f08dba8,
         type: 2}
@@ -1029,19 +990,19 @@ Prefab:
     - target: {fileID: 114227405465173532, guid: 4f33d15c5dcaf3945ad0c1226f08dba8,
         type: 2}
       propertyPath: godMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114227405465173532, guid: 4f33d15c5dcaf3945ad0c1226f08dba8,
         type: 2}
       propertyPath: shot.Array.data[1]
       value: 
-      objectReference: {fileID: 114439010645108944, guid: 54b99dc3049812f44b71b49046f5a180,
+      objectReference: {fileID: 1843887786587458, guid: 54b99dc3049812f44b71b49046f5a180,
         type: 2}
     - target: {fileID: 114227405465173532, guid: 4f33d15c5dcaf3945ad0c1226f08dba8,
         type: 2}
       propertyPath: shot.Array.data[0]
       value: 
-      objectReference: {fileID: 114287029538564112, guid: 0a7cf7250f558f04d91a19527a45599e,
+      objectReference: {fileID: 1132812898297568, guid: 0a7cf7250f558f04d91a19527a45599e,
         type: 2}
     - target: {fileID: 1443165685158174, guid: 4f33d15c5dcaf3945ad0c1226f08dba8, type: 2}
       propertyPath: m_IsActive
@@ -1121,27 +1082,8 @@ Transform:
   - {fileID: 1315468852}
   - {fileID: 1015897939}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1303274691 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1675350342192428, guid: d0c91706830f65e4b84e1c0594adb2fc,
-    type: 2}
-  m_PrefabInternal: {fileID: 52724105}
---- !u!114 &1303274695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1303274691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0888015b72a0c8943a0a9864870a7412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  cosAmplitude: 0.05
-  cosFrequency: 0.2
 --- !u!1 &1315468850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1149,48 @@ Transform:
   m_Father: {fileID: 1293231400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1323482868
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342910067234082, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1368416208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1288,7 @@ Transform:
   m_LocalScale: {x: 16, y: 16, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1375713035 stripped
 GameObject:
@@ -1324,7 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   cosAmplitude: -0.05
-  cosFrequency: 0.2
+  cosFrequency: 1
 --- !u!1 &1394982834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1500268249
 GameObject:
@@ -1502,7 +1486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1576833715
 GameObject:
@@ -1618,7 +1602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665564426
 GameObject:
@@ -1630,7 +1614,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1665564427}
   - component: {fileID: 1665564430}
-  - component: {fileID: 1665564428}
   m_Layer: 8
   m_Name: 'LaserRight '
   m_TagString: Untagged
@@ -1652,27 +1635,6 @@ Transform:
   m_Father: {fileID: 2018306362}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1665564428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1665564426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1acc57180240342879db29b90f49be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subdivisionsPerSection: 16
-  bezierChain:
-  - p0: {x: -2, y: -0, z: -0}
-    p1: {x: 0, y: 2, z: 0}
-    p2: {x: 2, y: 0, z: 0}
-  useLineRenderer: 0
-  stayWithTransform: 0
-  useTransformScale: 0
-  showGizmos: 1
-  continualRecalculate: 1
 --- !u!114 &1665564430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1710,12 +1672,9 @@ MonoBehaviour:
   thisRenderer: {fileID: 0}
   materials: []
   gibs: {fileID: 0}
-  shot: []
-  gunBarrel: []
-  shotFireRate: 0
   polarity: 0
   gravStrength: 2
-  gravMax: 50
+  gravMax: 25
   focusOffset: {x: 0, y: 0.33, z: 0}
 --- !u!135 &1795509297
 SphereCollider:
@@ -1786,7 +1745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2070166229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1816,7 @@ RectTransform:
   - {fileID: 1576833716}
   - {fileID: 956305743}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
