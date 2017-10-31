@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114066636021243736}
   - component: {fileID: 199638335304198260}
   m_Layer: 11
-  m_Name: LaserTorpedo_Dark
+  m_Name: LaserTorpedo_Dark-Fenrir
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   materials: []
   gibs: {fileID: 1389879322017948, guid: ca7f4f94ed32b3c46a40ae8e3a41047e, type: 2}
   polarity: 1
-  speed: 25
+  speed: 40
   targetPath: {fileID: 0}
   transformPath: []
 --- !u!114 &114756847712405448

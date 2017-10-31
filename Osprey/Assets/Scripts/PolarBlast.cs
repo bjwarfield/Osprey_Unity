@@ -9,40 +9,64 @@ public class PolarBlast : MonoBehaviour
     public List<Transform> transformChain;
     public int chainJumps;
     //private QuadraticBezierChain beamPath;
-    public GameObject parent;
+    public Player3DControl parent;
     public PlayerLaserTorpedo beamProjectile;
     //private List<GameObject> targets;
     public Vector3 offsetFromParent;
     private Quaternion rotation;
     // Use this for initialization
+    private bool fired;
 
     private Transform thisTransform;
 	void Start () {
         //beamPath = GetComponent<QuadraticBezierChain>();
         thisTransform = GetComponent<Transform>();
         rotation = thisTransform.rotation;
+        fired = false;
         //targets = new List<GameObject>();
 	}
 
+    
 
     
 
     // Update is called once per frame
     void Update() {
+        if (fired)
+        {
+            fired = false;
+            parent.energy = 0.0f;
+        }
+
         if (Input.GetButtonDown("Fire3"))
         {
-            GetPath();
-            PlayerLaserTorpedo beam = Instantiate(beamProjectile, thisTransform.position, thisTransform.rotation) as PlayerLaserTorpedo;
-            beam.Init(transformChain);
+            if(parent.energy / 20 >= 1)
+            {
+                for(int i = 1; i <= parent.energy / 20; i++)
+                {
+                    
+                    PlayerLaserTorpedo beam = Instantiate(beamProjectile, thisTransform.position, thisTransform.rotation) as PlayerLaserTorpedo;
+                    Vector3 offset = new Vector3();
+                    offset += thisTransform.up * 3 * i;
+                    offset.y -= (i-1) * 3;
+                    GetPath(offset);
+                    beam.Init(transformChain, offset);
+                    
+                }
+                fired = true;
+            }
+
         }
 	}
 
+    
 
-    private void GetPath()
+
+    private void GetPath(Vector3 offset)
     {
         List<GameObject> allEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
 
-        //targets.Clear();
+
         transformChain.Clear();
         transformChain.Add(thisTransform);
 
@@ -60,7 +84,15 @@ public class PolarBlast : MonoBehaviour
 
             foreach (GameObject enemy in allEnemies)
             {
-                float sqrDistance = (enemy.transform.position - transformChain[0].position).sqrMagnitude;
+                float sqrDistance;
+
+                if (i == 0)
+                {
+                    sqrDistance = (enemy.transform.position - transformChain[0].position + offset).sqrMagnitude;
+                }else
+                {
+                    sqrDistance = (enemy.transform.position - transformChain[i].position).sqrMagnitude;
+                }
                 if (sqrDistance < nearestSqrDistance)
                 {
                     nearestSqrDistance = sqrDistance;
@@ -71,50 +103,10 @@ public class PolarBlast : MonoBehaviour
             if (nearestEnemy)
             {
                 transformChain.Add(nearestEnemy.transform);
-                //targets.Add(nearestEnemy);
                 allEnemies.Remove(nearestEnemy);
             }
         }
 
-        //List<QuadraticBezierPoints> chain = new List<QuadraticBezierPoints>();
-
-        //for (int i = 0; i < transformChain.Count; i++)
-        //{
-        //    Vector3 start, pull, end;
-
-        //    start = transformChain[i].position;
-        //    if (i == 0)
-        //    {
-        //        pull = transformChain[i].position + transformChain[i].up * 3.0f;
-        //        if (i == transformChain.Count - 1)
-        //        {
-        //            end = transformChain[i].position + transformChain[i].up * 4.0f;
-        //        }
-        //        else
-        //        {
-        //            end = transformChain[i + 1].position;
-        //        }
-
-        //    }
-        //    else if (i == transformChain.Count - 1)
-        //    {
-        //        pull = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 4;
-        //        end = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 8;
-        //    }
-        //    else
-        //    {
-        //        pull = transformChain[i].position + (transformChain[i].position - chain[i - 1].p1).normalized * 4.0f;
-        //        end = transformChain[i + 1].position;
-        //    }
-
-        //    start.z = pull.z = end.z = 0;
-
-        //    QuadraticBezierPoints link = new QuadraticBezierPoints(start, pull, end);
-
-        //    chain.Add(link);
-        //}
-
-        //beamPath.SetBezierChain(TransformsToBezierPoints(transformChain));
     }
 
 

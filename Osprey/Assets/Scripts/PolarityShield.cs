@@ -20,17 +20,29 @@ public class PolarityShield : Entity {
             //Debug.Log(bullet.getPolarity());
             if (bullet.Polarity== polarity)
             {
+                bullet.speed = 0;
                 //bullet.transform.Translate((thisTransform.position) * Time.deltaTime * gravStrength, Space.Self);
                 Vector3 diff = thisTransform.position - bullet.transform.position + focusOffset;
-                float ang = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-
-                bullet.transform.rotation = Quaternion.AngleAxis(ang - 90, Vector3.forward);
+                //float ang = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+                
+                //bullet.transform.rotation = Quaternion.AngleAxis(ang - 90, Vector3.forward);
                 //bullet.transform.position = Vector3.Slerp(bullet.transform.position, bullet.transform.position + focusOffset, 1.0f * Time.deltaTime);
-                bullet.speed += gravStrength;
-                bullet.speed = Mathf.Min(bullet.speed, gravMax);
+                //bullet.speed += gravStrength;
+                //bullet.speed = Mathf.Min(bullet.speed, gravMax);
+                float lerpValue = Mathf.InverseLerp(0, diff.magnitude, gravStrength * Time.deltaTime);
+                //Debug.Log(lerpValue);
+                bullet.transform.position = Vector3.Lerp(bullet.transform.position, transform.position + focusOffset, lerpValue);
+
+
+
+
             }
         }
     }
 
-
+    private void OnDrawGizmos()
+    {
+        
+        Gizmos.DrawCube(transform.position + focusOffset, new Vector3(.2f, .2f, .2f));
+    }
 }

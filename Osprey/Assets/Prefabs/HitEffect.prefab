@@ -223,7 +223,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
+      scalar: 5
       minScalar: 0.01
       maxCurve:
         serializedVersion: 2
@@ -619,7 +619,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 10
+    angle: 45
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -818,7 +818,7 @@ ParticleSystem:
     m_Bursts:
     - time: 0
       minCount: 30
-      maxCount: 30
+      maxCount: 50
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:

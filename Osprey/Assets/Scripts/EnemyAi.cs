@@ -14,6 +14,8 @@ public class EnemyAi : Entity {
     public float flashTime;
     private float hitTimer;
     public Color[] colors;
+    private StateMachine sm = new StateMachine();
+
 
     public GameObject playerTarget;
     void Start () {

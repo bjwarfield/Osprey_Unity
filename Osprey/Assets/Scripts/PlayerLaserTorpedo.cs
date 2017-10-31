@@ -33,10 +33,20 @@ public class PlayerLaserTorpedo : Entity{
 	}
     public void Init(List<Transform> path)
     {
+        Vector3 offset = new Vector3((transformPath[0].up * 5.0f).x, (transformPath[0].up * 5.0f).y, 0);
+        
         transformPath = new List<Transform>(path);
         targetPath.SetBezierChain(TransformsToBezierPoints(transformPath));
         zeroStart = transformPath[0].position;
-        zeroPull = transformPath[0].position + transformPath[0].up * 3.0f;
+        zeroPull = transformPath[0].position + offset;
+    }
+
+    public void Init(List<Transform> path, Vector3 offset)
+    {
+        transformPath = new List<Transform>(path);
+        targetPath.SetBezierChain(TransformsToBezierPoints(transformPath));
+        zeroStart = transformPath[0].position;
+        zeroPull = transformPath[0].position + offset;
     }
 
 

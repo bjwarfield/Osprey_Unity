@@ -75,7 +75,7 @@ MonoBehaviour:
   materials: []
   gibs: {fileID: 0}
   polarity: 0
-  speed: 10
+  speed: 5
 --- !u!114 &114886803142714774
 MonoBehaviour:
   m_ObjectHideFlags: 1
