@@ -6,6 +6,11 @@ public class StateMachine  {
 
     private Stack<IState> stateStack;
 
+    public StateMachine()
+    {
+        stateStack = new Stack<IState>();
+    }
+
     public void AddState(IState newState)
     {
         stateStack.Push(newState);

@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\DestroyOnInvisible.cs" />
     <Compile Include="Assets\Scripts\DestroyOnLifetime.cs" />
     <Compile Include="Assets\Scripts\DestroyOnTime.cs" />
+    <Compile Include="Assets\Scripts\Editors\QuadBezierChainEditor.cs" />
     <Compile Include="Assets\Scripts\EnemyAi.cs" />
     <Compile Include="Assets\Scripts\EnemyBulletControl.cs" />
     <Compile Include="Assets\Scripts\Entity.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Assets\Scripts\State_SeekOut.cs" />
     <Compile Include="Assets\Scripts\StateMachine.cs" />
     <Compile Include="Assets\Scripts\TargetNearestEnemy.cs" />
+    <Compile Include="Assets\States\MovementState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />

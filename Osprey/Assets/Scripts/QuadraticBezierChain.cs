@@ -7,7 +7,7 @@ using UnityEngine;
 //param p1: Pull point, Defines curvature between p0 and p2
 //param p2: End Point
 [System.Serializable]
-public class QuadraticBezierPoints
+public struct QuadraticBezierPoints
 {
     public Vector3 p0, p1, p2;
     public QuadraticBezierPoints(Vector3 start, Vector3 pull, Vector3 end)
@@ -16,20 +16,69 @@ public class QuadraticBezierPoints
         p1 = pull;
         p2 = end;
     }
+
+    public QuadraticBezierPoints (QuadraticBezierPoints points)
+    {
+        p0 = points.p0;
+        p1 = points.p1;
+        p2 = points.p2;
+    }
+
+    public static bool operator ==(QuadraticBezierPoints qbp1, QuadraticBezierPoints qbp2)
+    {
+        if(qbp1.p0.Equals(qbp2.p0) && qbp1.p1.Equals(qbp2.p1) && qbp1.p2.Equals(qbp2.p2))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static bool operator !=(QuadraticBezierPoints qbp1, QuadraticBezierPoints qbp2)
+    {
+        if (!qbp1.p0.Equals(qbp2.p0) || !qbp1.p1.Equals(qbp2.p1) || !qbp1.p2.Equals(qbp2.p2))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // override object.Equals
+    public override bool Equals(object obj)
+    {
+
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        return this == (QuadraticBezierPoints)obj;
+    }
+
+  
+
+    // override object.GetHashCode
+    public override int GetHashCode()
+    {
+        //return base.GetHashCode();
+        return 0;
+    }
+    
+
 }
 
 [ExecuteInEditMode]
 public class QuadraticBezierChain : MonoBehaviour
 {
 
-    //line segments per link in chain
+    //line segments per link (granularity) in chain
     public int subdivisionsPerSection;
+
     //total line segments in chain
     private int totalSubdivisions;
+
     //container holding control points in each link
     public QuadraticBezierPoints[] bezierChain;
 
-    //there is a hidden line renderer thing here
 
     public bool useLineRenderer;
 
@@ -37,11 +86,12 @@ public class QuadraticBezierChain : MonoBehaviour
     public bool useTransformScale;
     public bool showGizmos;
 
-    //each line segment in chain
+    //each line segment point in chain
     private Vector3[] subDivisionPoints;
 
     //flag for users to see editor changes at runtime
     public bool continualRecalculate;
+
     //flag set when functions are called that modify positions/tangents
     private bool oneTimeRecalculate;
 
@@ -67,12 +117,16 @@ public class QuadraticBezierChain : MonoBehaviour
                 Gizmos.DrawLine(subDivisionPoints[i - 1], subDivisionPoints[i]);
             }
 
-            for (int i = 0; i < bezierChain.Length; i++)
-            {
-                Gizmos.DrawSphere(bezierChain[i].p0, 0.2f);
-                Gizmos.DrawSphere(bezierChain[i].p1, 0.2f);
-                Gizmos.DrawSphere(bezierChain[i].p2, 0.2f);
-            }
+            //Gizmos.color = Color.cyan;
+            //for (int i = 0; i < bezierChain.Length; i++)
+            //{
+            //    //Gizmos.color = Color.green;
+            //    //Gizmos.DrawSphere(bezierChain[i].p0, 0.3f);
+            //    //Gizmos.color = Color.cyan;
+            //    //Gizmos.DrawSphere(bezierChain[i].p1, 0.3f);
+            //    //Gizmos.color = Color.magenta;
+            //    //Gizmos.DrawSphere(bezierChain[i].p2, 0.3f);
+            //}
         }
     }
 
@@ -173,7 +227,7 @@ public class QuadraticBezierChain : MonoBehaviour
                     subDivisionPoints[subdivisionIndex].z = subDivisionPoints[subdivisionIndex].z * transform.lossyScale.z;
                 }
 
-                //sngle * point + position
+                //single * point + position
                 if (stayWithTransform)
                 {
                     subDivisionPoints[subdivisionIndex] = transform.rotation * subDivisionPoints[subdivisionIndex] + transform.position;
@@ -242,7 +296,7 @@ public class QuadraticBezierChain : MonoBehaviour
         }
         else
         {
-            return null;
+            return new QuadraticBezierPoints(Vector3.zero, Vector3.zero, Vector3.zero);
         }
     }
 
