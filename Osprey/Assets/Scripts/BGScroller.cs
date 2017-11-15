@@ -19,7 +19,8 @@ public class BGScroller : MonoBehaviour {
 	void Update () {
         time += Time.deltaTime;
 
-        if (player.activeSelf)
+        //if (player.activeSelf)
+        if(false)
         {
             offset.Set(player.transform.position.x * horzFactor, time * vertSpeed);
         }

@@ -17,32 +17,55 @@ public class EnemyAi : Entity {
     private StateMachine sm = new StateMachine();
 
 
+    public BezierSpline path;
+    private float startTime;
+    public float duration = 5f;
+
+
+
     public GameObject playerTarget;
     void Start () {
         thisTransform = GetComponent<Transform>();
         thisRenderer.sharedMaterial = materials[(int)polarity];
         hitTimer = 0;
         playerTarget = GameObject.FindGameObjectWithTag("Player");
+        startTime = Time.time;
     }
-	
-	void Update () {
 
-        foreach(GameObject barrel in gunBarrel)
+    private void OnEnable()
+    {
+        startTime = Time.time;
+        thisRenderer.sharedMaterial = materials[(int)polarity];
+        hitTimer = 0;
+    }
+
+    void Update () {
+        float k = (Time.time - startTime) / duration;
+        if (k < 1f)
         {
-            if (Time.time - lastShot > 1 / shotFireRate)
-            {
-                if (playerTarget.activeSelf)
-                {
-                    Vector3 diff = playerTarget.transform.position - barrel.transform.position;
-                    float ang = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-                    barrel.transform.rotation = Quaternion.AngleAxis(ang -90, Vector3.forward);
-                }
-
-                Instantiate(shot[(int)polarity], barrel.transform.position, barrel.transform.rotation);
-                lastShot = Time.time;
-            }
-
+            EaseMode easeMode = EaseMode.QUADRATIC;
+            transform.LookAt(transform.position + path.GetDirection(Easing.Ease(easeMode,k)), Vector3.back);
+            transform.position = path.GetLerpPoint(Easing.Ease(easeMode, k));
         }
+        else
+        {
+        }
+        //foreach(GameObject barrel in gunBarrel)
+        //{
+        //    if (Time.time - lastShot > 1 / shotFireRate)
+        //    {
+        //        if (playerTarget.activeSelf)
+        //        {
+        //            Vector3 diff = playerTarget.transform.position - barrel.transform.position;
+        //            float ang = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        //            barrel.transform.rotation = Quaternion.AngleAxis(ang -90, Vector3.forward);
+        //        }
+
+        //        Instantiate(shot[(int)polarity], barrel.transform.position, barrel.transform.rotation);
+        //        lastShot = Time.time;
+        //    }
+
+        //}
         if(hit)
         {
             if (Time.time < hitTimer)

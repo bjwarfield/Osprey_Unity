@@ -106,10 +106,10 @@ public class Player3DControl : Entity
         }
 
         //apply tilt value to object transform
-        thisTransform.rotation = Quaternion.AngleAxis(tilt, Vector3.up);
+        thisTransform.rotation = Quaternion.Euler(270f, 0f, tilt);
 
 
-        
+
 
         //bind movement to gamespace
         movement = new Vector3(

@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4808471942328258}
   - component: {fileID: 114752728923499762}
   m_Layer: 8
-  m_Name: LaserLeft
+  m_Name: TorpedoLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4055729385656032}
   - component: {fileID: 114152648544515554}
   m_Layer: 8
-  m_Name: 'LaserRight '
+  m_Name: 'TorpedoRight '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   materials: []
   gibs: {fileID: 0}
   polarity: 0
-  gravStrength: 2
+  gravStrength: 30
   gravMax: 25
   focusOffset: {x: 0, y: 0.33, z: 0}
 --- !u!114 &114152648544515554
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformChain: []
-  chainJumps: 5
+  chainJumps: 3
   parent: {fileID: 114227405465173532}
   beamProjectile: {fileID: 114074737313355826, guid: 3168770ad8868f44388f556e0eaabc72,
     type: 2}
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformChain: []
-  chainJumps: 5
+  chainJumps: 3
   parent: {fileID: 114227405465173532}
   beamProjectile: {fileID: 114074737313355826, guid: 3168770ad8868f44388f556e0eaabc72,
     type: 2}
