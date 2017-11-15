@@ -121,6 +121,16 @@ public class BezierSplineEditor : Editor {
         if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount)
         {
             DrawSelectedPointInspector();
+            using (new EditorGUI.DisabledScope())
+            {
+                EditorGUILayout.IntField("Curve Index", (selectedIndex+1)/3);
+                EditorGUILayout.FloatField("Distance at Point", spline.GetLenthAt((selectedIndex+1)/3* BezierSpline.linesPerCurve));
+            }
+        }
+
+        using(new EditorGUI.DisabledScope())
+        {
+            EditorGUILayout.FloatField("Spline Length", spline.GetTotalLength());
         }
 
         if (GUILayout.Button("Add Curve"))

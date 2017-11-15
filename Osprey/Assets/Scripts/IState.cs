@@ -7,5 +7,5 @@ public interface IState {
     void Start();
     void Execute();
     void Stop();
-
+    bool Finished();
 }

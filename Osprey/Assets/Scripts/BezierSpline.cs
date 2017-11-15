@@ -18,7 +18,7 @@ public class BezierSpline : MonoBehaviour {
     private Vector3[] curvePoints;
     private float[] lengths;
     private bool doRecalc = true;
-    private const int linesPerCurve = 16;
+    public const int linesPerCurve = 16;
     //parallel point mode array
     [SerializeField]
     private BezierControlPointMode[] modes;
@@ -361,6 +361,10 @@ public class BezierSpline : MonoBehaviour {
         return lengths[lengths.Length - 1];
     }
 
+    public float GetLenthAt(int index)
+    {
+        return lengths[index];
+    }
     public void SetControlPointMode(int index, BezierControlPointMode mode)
     {
         doRecalc = true;

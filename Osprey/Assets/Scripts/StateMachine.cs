@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateMachine  {
 
-    private Stack<IState> stateStack;
+    public Stack<IState> stateStack;
 
     public StateMachine()
     {

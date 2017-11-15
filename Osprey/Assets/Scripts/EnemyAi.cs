@@ -1,6 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public struct MovementAction
+{
+    private float startTime;
+    public float duration;
+    public EaseMode easeMode;
+    public float startDistance;
+    public float endDistance;
+    private bool endflag;
+
+    public void init()
+    {
+        endflag = false;
+        startTime = Time.time;
+    }
+
+    public void update(EnemyAi enemy)
+    {
+        float d = startDistance + Easing.Ease(easeMode, (Time.time - startTime) / duration) * (endDistance - startDistance);
+        if ((Time.time - startTime) / duration < 1f && !endflag)
+        {
+            enemy.transform.position = enemy.path.GetDistancePoint(d);
+        }
+        else
+        {
+            endflag = true;
+        }
+    }
+
+    public bool finished()
+    {
+        return endflag;
+    }
+}
 
 public class EnemyAi : Entity {
     public float speed = 1.0f;
@@ -14,12 +47,13 @@ public class EnemyAi : Entity {
     public float flashTime;
     private float hitTimer;
     public Color[] colors;
-    private StateMachine sm = new StateMachine();
+    public MovementAction[] moveList;
+    private int moveIndex;
+    //public StateMachine sm = new StateMachine();
 
 
     public BezierSpline path;
-    private float startTime;
-    public float duration = 5f;
+
 
 
 
@@ -29,27 +63,28 @@ public class EnemyAi : Entity {
         thisRenderer.sharedMaterial = materials[(int)polarity];
         hitTimer = 0;
         playerTarget = GameObject.FindGameObjectWithTag("Player");
-        startTime = Time.time;
+        //startTime = Time.time;
     }
 
     private void OnEnable()
     {
-        startTime = Time.time;
         thisRenderer.sharedMaterial = materials[(int)polarity];
         hitTimer = 0;
+        moveIndex = 0;
     }
 
     void Update () {
-        float k = (Time.time - startTime) / duration;
-        if (k < 1f)
+
+        if(moveIndex < moveList.Length)
         {
-            EaseMode easeMode = EaseMode.QUADRATIC;
-            transform.LookAt(transform.position + path.GetDirection(Easing.Ease(easeMode,k)), Vector3.back);
-            transform.position = path.GetLerpPoint(Easing.Ease(easeMode, k));
-        }
-        else
-        {
-        }
+            moveList[moveIndex].update(this);
+            if(moveList[moveIndex].finished() && moveIndex < moveList.Length -1)
+            {
+                moveIndex++;
+                moveList[moveIndex].init();
+            }
+        }    
+        //}
         //foreach(GameObject barrel in gunBarrel)
         //{
         //    if (Time.time - lastShot > 1 / shotFireRate)
