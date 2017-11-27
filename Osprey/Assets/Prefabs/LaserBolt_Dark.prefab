@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 120750768607585138}
   - component: {fileID: 65025936358651272}
   - component: {fileID: 114439010645108944}
-  - component: {fileID: 114591740220661086}
   m_Layer: 9
   m_Name: LaserBolt_Dark
   m_TagString: PlayerBullet
@@ -72,18 +71,6 @@ MonoBehaviour:
   gibs: {fileID: 1502101941468546, guid: fb3918bd98620bc4598852477fa2c76b, type: 2}
   polarity: 0
   speed: 30
---- !u!114 &114591740220661086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1843887786587458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e199a50f044a14385ad298aaa1cecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTarget: {fileID: 1843887786587458}
 --- !u!120 &120750768607585138
 LineRenderer:
   m_ObjectHideFlags: 1

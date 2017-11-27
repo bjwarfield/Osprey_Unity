@@ -18,7 +18,7 @@ public class BezierSpline : MonoBehaviour {
     private Vector3[] curvePoints;
     private float[] lengths;
     private bool doRecalc = true;
-    public const int linesPerCurve = 16;
+    public const int linesPerCurve = 32;
     //parallel point mode array
     [SerializeField]
     private BezierControlPointMode[] modes;
@@ -28,6 +28,7 @@ public class BezierSpline : MonoBehaviour {
 
     public bool useLineRenderer;
     private LineRenderer lineRenderer;
+    public bool showGizmos;
 
     public bool ClosedLoop
     {
@@ -47,7 +48,22 @@ public class BezierSpline : MonoBehaviour {
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        
 
+        if (showGizmos)
+        {
+            if (doRecalc)
+            {
+                RecalculateCurvePoints();
+            }
+            for (int i = 1; i < curvePoints.Length; i++)
+            {
+                Gizmos.DrawLine(curvePoints[i - 1], curvePoints[i]);
+            }
+        }
+    }
     public int ControlPointCount
     {
         get

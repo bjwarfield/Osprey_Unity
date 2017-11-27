@@ -34,5 +34,14 @@ public abstract class Entity: MonoBehaviour
     }
 
     public virtual void SetPolarity(polarType value) { polarity = value; }
-    
+
+    public virtual void Init()
+    {
+
+    }
+
+    public virtual void ExitArena()
+    {
+        Destroy(gameObject);
+    }
 }

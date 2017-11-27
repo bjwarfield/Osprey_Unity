@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 120254920209509034}
   - component: {fileID: 65078951539589644}
   - component: {fileID: 114287029538564112}
-  - component: {fileID: 114258646774473064}
   m_Layer: 9
   m_Name: LaserBolt_Light
   m_TagString: PlayerBullet
@@ -55,18 +54,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.75, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114258646774473064
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1132812898297568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e199a50f044a14385ad298aaa1cecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTarget: {fileID: 1132812898297568}
 --- !u!114 &114287029538564112
 MonoBehaviour:
   m_ObjectHideFlags: 1

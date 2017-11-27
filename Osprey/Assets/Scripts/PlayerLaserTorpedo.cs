@@ -7,6 +7,7 @@ public class PlayerLaserTorpedo : Entity{
     public QuadraticBezierChain targetPath;
     private float startTime;
     public List<Transform> transformPath;
+    public Vector3[] vectorPath;
     private Vector3 zeroStart, zeroPull;
 
     private void Start()
@@ -36,17 +37,22 @@ public class PlayerLaserTorpedo : Entity{
         Vector3 offset = new Vector3((transformPath[0].up * 5.0f).x, (transformPath[0].up * 5.0f).y, 0);
         
         transformPath = new List<Transform>(path);
+        vectorPath = new Vector3[path.Count];
         targetPath.SetBezierChain(TransformsToBezierPoints(transformPath));
         zeroStart = transformPath[0].position;
         zeroPull = transformPath[0].position + offset;
+        
     }
 
     public void Init(List<Transform> path, Vector3 offset)
     {
         transformPath = new List<Transform>(path);
+        vectorPath = new Vector3[path.Count];
         targetPath.SetBezierChain(TransformsToBezierPoints(transformPath));
         zeroStart = transformPath[0].position;
         zeroPull = transformPath[0].position + offset;
+
+        
     }
 
 
@@ -62,13 +68,24 @@ public class PlayerLaserTorpedo : Entity{
 
     public List<QuadraticBezierPoints> TransformsToBezierPoints(List<Transform> transformList)
     {
+        
+        for(int i = 0; i < vectorPath.Length; i++)
+        {
+            if(transformList[i])
+            {
+                vectorPath[i] = transformList[i].position;
+            }
+        }
+
         List<QuadraticBezierPoints> chain = new List<QuadraticBezierPoints>();
 
         for (int i = 0; i < transformList.Count; i++)
         {
             Vector3 start, pull, end;
 
-            start = transformList[i].position;
+            start = vectorPath[i];
+
+            //set initial positions of curve
             if (i == 0)
             {
                 //pull = transformList[i].position + transformList[i].up * 3.0f;
@@ -76,23 +93,25 @@ public class PlayerLaserTorpedo : Entity{
                 pull = zeroPull;
                 if (i == transformList.Count - 1)
                 {
-                    end = transformList[i].position + transformList[i].up * 4.0f;
+                    end = zeroPull + Vector3.up * 4.0f;
                 }
                 else
                 {
-                    end = transformList[i + 1].position;
+                    end = vectorPath[i + 1];
                 }
                 
             }
+            //set end position of curve
             else if (i == transformList.Count - 1)
             {
-                pull = transformList[i].position + (transformList[i].position - chain[i - 1].p1).normalized * 4;
-                end = transformList[i].position + (transformList[i].position - chain[i - 1].p1).normalized * 8;
+                pull = vectorPath[i] + (vectorPath[i] - chain[i - 1].p1).normalized * 4;
+                end = vectorPath[i] + (vectorPath[i] - chain[i - 1].p1).normalized * 8;
             }
+            //set middle positions of curve
             else
             {
-                pull = transformList[i].position + (transformList[i].position - chain[i - 1].p1).normalized * 4.0f;
-                end = transformList[i + 1].position;
+                pull = vectorPath[i] + (vectorPath[i] - chain[i - 1].p1).normalized * 4.0f;
+                end = vectorPath[i + 1];
             }
 
 
