@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4361113898509792}
-  - component: {fileID: 114341098536155542}
   - component: {fileID: 114291088553891936}
   - component: {fileID: 136393790328405592}
   - component: {fileID: 54335256910714528}
@@ -210,25 +209,15 @@ MonoBehaviour:
   - {fileID: 114693249048514924, guid: 81969d0770529654eae37b67657a8bbf, type: 2}
   gunBarrel:
   - {fileID: 1750634139551278}
-  shotFireRate: 0.5
-  maxHealth: 0
+  maxHealth: 20
   flashTime: 0.02
   colors:
   - {r: 0.2, g: 0.2, b: 0.2, a: 1}
   - {r: 0.8897059, g: 0.8897059, b: 0.8897059, a: 1}
+  moveList: []
+  shootList: []
+  path: {fileID: 0}
   playerTarget: {fileID: 0}
---- !u!114 &114341098536155542
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675350342192428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e199a50f044a14385ad298aaa1cecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTarget: {fileID: 0}
 --- !u!136 &136393790328405592
 CapsuleCollider:
   m_ObjectHideFlags: 1

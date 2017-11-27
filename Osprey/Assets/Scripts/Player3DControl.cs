@@ -69,6 +69,10 @@ public class Player3DControl : Entity
 	// Update is called once per frame
 	void Update () {
 
+        if (godMode)
+        {
+            energy = maxEnergy;
+        }
         //get user inputs for movement vectors
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
         thisTransform.Translate(speed * Time.deltaTime * movement.normalized, Space.World);

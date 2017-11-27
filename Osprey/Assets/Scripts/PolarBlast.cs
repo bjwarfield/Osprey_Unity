@@ -10,7 +10,7 @@ public class PolarBlast : MonoBehaviour
     public int chainJumps;
     //private QuadraticBezierChain beamPath;
     public Player3DControl parent;
-    public PlayerLaserTorpedo beamProjectile;
+    public PlayerLaserTorpedo[] beamProjectile;
     //private List<GameObject> targets;
     public Vector3 offsetFromParent;
     private Quaternion rotation;
@@ -45,10 +45,10 @@ public class PolarBlast : MonoBehaviour
                 for(int i = 1; i <= parent.energy / 20; i++)
                 {
                     
-                    PlayerLaserTorpedo beam = Instantiate(beamProjectile, thisTransform.position, thisTransform.rotation) as PlayerLaserTorpedo;
+                    PlayerLaserTorpedo beam = Instantiate(beamProjectile[(int) parent.Polarity], thisTransform.position, thisTransform.rotation) as PlayerLaserTorpedo;
                     Vector3 offset = new Vector3();
-                    offset += thisTransform.up * 3 * i;
-                    offset.y -= (i-1) * 3;
+                    offset += thisTransform.up * 0.75f * i;
+                    offset.y -= (i-1) * 0.75f;
                     GetPath(offset);
                     beam.Init(transformChain, offset);
                     

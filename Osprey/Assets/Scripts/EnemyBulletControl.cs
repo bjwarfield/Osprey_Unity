@@ -12,7 +12,7 @@ public class EnemyBulletControl : Entity {
 	}
 	
 	void Update () {
-        thisTransform.Translate(thisTransform.up * speed * Time.deltaTime, Space.World);
+        thisTransform.Translate(thisTransform.forward * speed * Time.deltaTime, Space.World);
 	}
 
     private void OnTriggerEnter(Collider other)

@@ -118,6 +118,15 @@ public class BezierSplineEditor : Editor {
             spline.useLineRenderer = useLineRenderer;
         }
 
+        EditorGUI.BeginChangeCheck();
+        bool showGizmos = EditorGUILayout.Toggle("Toggle Spline Gizoms", spline.showGizmos);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(spline, "Toggle Spline Gizmos");
+            EditorUtility.SetDirty(spline);
+            spline.showGizmos = showGizmos;
+        }
+
         if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount)
         {
             DrawSelectedPointInspector();

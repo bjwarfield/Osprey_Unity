@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 135087006606424028}
   - component: {fileID: 114940112806983706}
   - component: {fileID: 54322311231931674}
-  - component: {fileID: 135388091696694050}
   - component: {fileID: 114019390813869262}
   m_Layer: 8
   m_Name: DarkShield
@@ -64,7 +63,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1346579252673968
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +126,6 @@ GameObject:
   - component: {fileID: 135490097351675094}
   - component: {fileID: 114377714013852336}
   - component: {fileID: 54510782722677588}
-  - component: {fileID: 135032257475029158}
   - component: {fileID: 114099744516854934}
   m_Layer: 8
   m_Name: LightShield
@@ -335,7 +333,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357166372599130}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0.07, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -347,7 +345,7 @@ Transform:
   - {fileID: 4808471942328258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!4 &4808471942328258
 Transform:
   m_ObjectHideFlags: 1
@@ -483,8 +481,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.2, z: 0.1}
-  m_Center: {x: 0, y: 0.33, z: 0}
+  m_Size: {x: 0.1, y: 0.1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.33}
 --- !u!114 &114019390813869262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,8 +535,9 @@ MonoBehaviour:
   transformChain: []
   chainJumps: 3
   parent: {fileID: 114227405465173532}
-  beamProjectile: {fileID: 114074737313355826, guid: 3168770ad8868f44388f556e0eaabc72,
-    type: 2}
+  beamProjectile:
+  - {fileID: 114074737313355826, guid: 43c2eab536cdd31409cbd3a213c15d6a, type: 2}
+  - {fileID: 114074737313355826, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
   offsetFromParent: {x: 0.34, y: -0.21, z: 0}
 --- !u!114 &114227405465173532
 MonoBehaviour:
@@ -628,8 +627,9 @@ MonoBehaviour:
   transformChain: []
   chainJumps: 3
   parent: {fileID: 114227405465173532}
-  beamProjectile: {fileID: 114074737313355826, guid: 3168770ad8868f44388f556e0eaabc72,
-    type: 2}
+  beamProjectile:
+  - {fileID: 114074737313355826, guid: 43c2eab536cdd31409cbd3a213c15d6a, type: 2}
+  - {fileID: 114074737313355826, guid: 3168770ad8868f44388f556e0eaabc72, type: 2}
   offsetFromParent: {x: -0.34, y: -0.21, z: 0}
 --- !u!114 &114940112806983706
 MonoBehaviour:
@@ -650,31 +650,7 @@ MonoBehaviour:
   gravStrength: 2
   gravMax: 25
   focusOffset: {x: 0, y: 0.33, z: 0}
---- !u!135 &135032257475029158
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1443165685158174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135087006606424028
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1343891146307568}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135388091696694050
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -757,7 +733,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1831345203
+  randomSeed: -1067577977
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13992,14 +13968,14 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346579252673968}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224689891879004866}
   m_Father: {fileID: 4794732233092048}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
